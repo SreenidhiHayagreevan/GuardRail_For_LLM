@@ -35,12 +35,12 @@ import torch
 import pandas as pd
 from sentence_transformers import SentenceTransformer, util
 
-# ML-based trained gatekeeper
-from .ml_input_guardrail import MLInputGuardrail
-
-# Ollama adapter (multi-model)
-from .ollama_client import ollama_generate
-
+try:
+    from .ml_input_guardrail import MLInputGuardrail
+    from .ollama_client import ollama_generate
+except ImportError:
+    from ml_input_guardrail import MLInputGuardrail
+    from ollama_client import ollama_generate
 
 # ============================================================
 # CONFIG
@@ -69,7 +69,7 @@ class GuardrailConfig:
 
     # Wikipedia KB (Airflow DAG uploaded this) — update if your S3 key differs
     wiki_rag_dataset_path: str = (
-        "s3://guardrail-group-bucket/knowledge_base/wikipedia/latest/wikipedia_en_articles.parquet"
+        "s3://guardrail-group-bucket/knowledge_base/wikipedia/latest/simplewiki_articles.parquet"
     )
 
     # Retrieval knobs
@@ -78,7 +78,7 @@ class GuardrailConfig:
     max_context_chars: int = 8000  # cap to avoid huge prompts
 
     # Ollama model key (must be one of your SUPPORTED_MODELS keys)
-    ollama_model_name: str = "qwen0.5"
+    ollama_model_name: str = "qwen2.5"
 
     # ML guardrail model config
     ml_guardrail_model_path: str = "input_safety_all7.joblib"
@@ -636,3 +636,4 @@ class GuardrailSystem:
             return
         df.to_parquet(path, index=False)
         print(f"Logs saved to {path}")
+

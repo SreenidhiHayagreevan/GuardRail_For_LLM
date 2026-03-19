@@ -21,21 +21,23 @@ This module is used by the GuardrailSystem to:
 import requests
 import time
 
-OLLAMA_HOST = "http://localhost:11434"
+OLLAMA_HOST = "http://127.0.0.1:11434"
 
-# Minimum 5 models for experimentation
+# Minimum models for experimentation
+# Added keys for: qwen0.5, qwen2.5, phi3, llama3, gemma3, mistral
 SUPPORTED_MODELS = {
     "qwen0.5": "qwen:0.5b",
-    "qwen2.5": "qwen2.5:3b",
+    "qwen2.5": "qwen2.5:latest",
     "llama3": "llama3.1",
     "mistral": "mistral",
-    "phi3": "phi3"
+    "phi3": "phi3",
+    "gemma3": "gemma3:latest",
 }
 
 
 def ollama_generate(
     prompt: str,
-    model_name: str = "qwen0.5",
+    model_name: str = "qwen2.5",
     system: str = "You are a helpful assistant.",
     temperature: float = 0.0,
     max_tokens: int = 256,
