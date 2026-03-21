@@ -26,12 +26,12 @@ OLLAMA_HOST = "http://127.0.0.1:11434"
 # Minimum models for experimentation
 # Added keys for: qwen0.5, qwen2.5, phi3, llama3, gemma3, mistral
 SUPPORTED_MODELS = {
-    "qwen0.5": "qwen:0.5b",
+    "qwen0.5": "qwen2.5:latest",  
     "qwen2.5": "qwen2.5:latest",
-    "llama3": "llama3.1",
-    "mistral": "mistral",
-    "phi3": "phi3",
-    "gemma3": "gemma3:latest",
+    "llama3": "llama3:latest",
+    "mistral": "mistral:latest",
+    "phi3": "phi3:latest",
+    "gemma3": "gemma3:4b",
 }
 
 
