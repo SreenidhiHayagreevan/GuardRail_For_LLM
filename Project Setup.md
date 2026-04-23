@@ -45,7 +45,7 @@ ollama pull qwen2.5
 ```powershell
 ollama serve
 ```
-> If Ollama is already running, skip this step
+> If Ollama is already running, skip this step ( to check if ollama is already running: use 'ollama list' command.
 
 ### TERMINAL 2 — Run Backend
 ```powershell
