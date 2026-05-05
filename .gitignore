@@ -5,3 +5,4 @@ __pycache__/
 eval_outputs/
 *.pt
 *.joblib
+node_modules/
